@@ -4,12 +4,6 @@ const getAllBinData = async (req, res) => {
   try {
     await binData
       .find({})
-      .select({
-        bin_id: true,
-        location: true,
-        fill: true,
-        updatedAt: true,
-      })
       .exec()
       .then((response) => {
         const data = res.status(200).send({ success: true, data: response });
