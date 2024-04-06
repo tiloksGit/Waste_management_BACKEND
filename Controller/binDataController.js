@@ -36,9 +36,10 @@ const fillBin = async (req, res) => {
   const { fill } = req.body;
   const { bin_id } = req.headers;
   const updatedBin = await binData.updateOne({ bin_id }, { fill });
-  console.log(updatedBin);
-  if (updatedBin.acknowledged == true) {
-    res.status(200);
+  if (updatedBin.acknowledged) {
+    res.status(200).send();
+    return 0;
   }
+  res.status(400).send();
 };
 module.exports = { getAllBinData, getBinDataById, fillBin };
