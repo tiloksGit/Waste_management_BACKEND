@@ -37,5 +37,8 @@ const fillBin = async (req, res) => {
   const { bin_id } = req.headers;
   const updatedBin = await binData.updateOne({ bin_id }, { fill });
   console.log(updatedBin);
+  if (updatedBin.acknowledged == true) {
+    res.status(200);
+  }
 };
 module.exports = { getAllBinData, getBinDataById, fillBin };
