@@ -19,13 +19,13 @@ app.use("/device", require("./Routes/deviceRoute"));
 app.use("/app", require("./Routes/applicationRoute"));
 app.use("*", (req, res) => {
   res.status(404);
-  if (req.accepts("html")) {
-    res.sendFile(path.join(__dirname, "Views", "404.html"));
-  } else if (req.accepts("json")) {
-    res.json({ message: "404 not found" });
-  } else {
-    res.type("txt").send("404... page not found");
-  }
+  // if (req.accepts("html")) {
+  //   res.sendFile(path.join(__dirname, "Views", "404.html"));
+  // } else if (req.accepts("json")) {
+  //   res.json({ message: "404 not found" });
+  // } else {
+  //   res.type("txt").send("404... page not found");
+  // }
 });
 mongoose.connection.once("open", () => {
   console.log("connected to mongoDB");

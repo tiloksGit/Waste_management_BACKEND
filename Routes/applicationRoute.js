@@ -7,5 +7,6 @@ const BinController = require("../Controller/binRegisterController");
 router.route("/bin/all").get(Controller.getAllBinData);
 router.route("/bin/id").get(binValidator, Controller.getBinDataById);
 router.route("/bin/add").post(BinController.addNewBin);
+router.route("/bin/delete/:bin_id").delete(BinController.removeBin)
 
 module.exports = router;

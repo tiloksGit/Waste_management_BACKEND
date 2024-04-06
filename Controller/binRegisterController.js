@@ -36,4 +36,15 @@ const addNewBin = async (req, res) => {
   }
 };
 
-module.exports = { addNewBin };
+const removeBin = async (req, res) => {
+  const { bin_id } = req.params;
+  const bin = await binData.findOne({ bin_id }).lean();
+  if (!bin) {
+    res.status(404).send({ success: false, message: "bin_id not available" });
+    return 0;
+  }
+  const deletedBin = await binData.deleteOne({ bin_id });
+  res.status(200).send({ success: true, message: deletedBin });
+  return 1;
+};
+module.exports = { addNewBin, removeBin };
