@@ -32,4 +32,10 @@ const getBinDataById = async (req, res) => {
   }
 };
 
-module.exports = { getAllBinData, getBinDataById };
+const fillBin = async (req, res) => {
+  const { fill } = req.body;
+  const { bin_id } = req.headers;
+  const updatedBin = await binData.updateOne({ bin_id }, { fill });
+  console.log(updatedBin);
+};
+module.exports = { getAllBinData, getBinDataById, fillBin };
