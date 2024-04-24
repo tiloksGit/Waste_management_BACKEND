@@ -42,4 +42,5 @@ const fillBin = async (req, res) => {
   }
   res.status(400).send();
 };
+
 module.exports = { getAllBinData, getBinDataById, fillBin };
